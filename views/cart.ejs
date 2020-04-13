@@ -1,0 +1,37 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%- include ('partials/header') %>
+
+        <h1>Checkout</h1>
+
+        <% cart.forEach(function(item) { %>
+            <div style="margin-top: 10px; margin-bottom: 10px">
+                <b><%= item[0].book_name %></b>
+                <br>
+                <i>by <%= item[0].book_authorname %></i>
+                <br>
+                <div>$<%= item[0].book_price %></div>
+            </div>
+        <% }); %>
+        <br>
+        <b>Total: $<%= cart_total %></b>
+        <br>
+        <br>
+        <form action="placeOrder" method="POST">
+            Shipping Address:
+            <br>
+            <input type="text" name="address" value="<%= user.user_address %>"></input>
+            <br>
+            <br>
+            Credit Card:
+            <br>
+            <input type="text" name="card" value="<%= user.user_cardnumber %>"></input>
+            <br>
+            <br>
+            <button type="submit">Place Order</button>
+        </form>
+    </body>
+</html>

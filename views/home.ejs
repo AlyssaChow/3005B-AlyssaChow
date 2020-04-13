@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+        <script src="js/cart.js"> </script>
+    </head>
+    <body>
+        <%- include ('partials/header') %>
+
+        <h1>Home</h1>
+        <input type="text" id="searchName" placeholder="Title"> </input> <br>
+        <input type="text" id="searchAuthor" placeholder="Author"> </input> <br>
+        <button onclick="searchForBook()">
+            Search
+        </button>
+        <div id = "container"> </div>
+        <br>
+        <script>
+            function addToCart(book_ID) {
+                $.ajax({
+                    url:'/addingToCart',
+                    type: "get",
+                    data: {book_ID: book_ID},
+                    success: function(data) {
+                                console.log("in addToCart fn")
+                            }
+                })
+            }
+
+            function searchForBook() {
+                let container = $("#container")
+                let searchName = $("#searchName").val()
+                let searchAuthor = $("#searchAuthor").val()
+                $.ajax({
+                    url:'/books',
+                    type: "get",
+                    data: { name: searchName,
+                            author: searchAuthor
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                                container.empty();
+                                for (let i = 0; i < data.length; i++) {
+                                    
+                                        container.append(`<p> 
+                                            <a href="/books/${data[i].book_ID}"> ${data[i].book_name} </a>        
+                                        <button onclick="addToCart(${data[i].book_ID})">
+                                            Add to cart
+                                        </button> </p>`)
+                                    
+
+                                }   
+                            }
+                })
+            }
+            
+            searchForBook();
+
+        </script>
+
+        <script>
+            getCart();
+        </script>
+    </body>
+</html>

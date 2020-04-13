@@ -1,0 +1,28 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%- include ('partials/header') %>
+
+        <h1>Order </h1>
+
+        <b>Ordered on: </b><%= order.order_date %>
+        <br>
+        <b>Address: </b><%= order.order_address %>
+        <br>
+        <br>
+        <% books.forEach(function(item) { %>
+            <div style="margin-top: 10px; margin-bottom: 10px">
+                <b><%= item.book_name %></b>
+                <br>
+                <i>by <%= item.book_authorname %></i>
+                <br>
+                <div>$<%= item.book_price %></div>
+            </div>
+        <% }); %>
+        <br>
+        <b>Total: $<%= order_total %></b>
+        
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+    </head>
+    <body>
+        <h1> Sales per </h1>
+        <input type="text" id="searchAuthor" placeholder="Author"> </input>
+        <button onclick="searchForSalesA()">
+            Search
+        </button>
+        <br><br>
+        <input type="text" id="searchGenre" placeholder="Genre"> </input>
+        <button onclick="searchForSalesG()">
+            Search
+        </button>
+        <div id = "container"> </div>
+        <br>
+        <script>
+            function searchForSalesA() {
+                let container = $("#container")
+                let searchAuthor = $("#searchAuthor").val()
+                $.ajax({
+                    url:'/reportsauthor',
+                    type: "get",
+                    data: {author: searchAuthor},
+                    dataType: "json",
+                    success: function(data) {
+                                container.empty();
+                                for (let i = 0; i < data.length; i++) {
+                                    container.append(`<p> 
+                                                        <a href="/sales/author/${data[i].book_authorname}"> ${data[i].book_authorname} </a>        
+                                                    </p>`)
+
+                                }   
+                            }
+                })
+            }
+
+            function searchForSalesG() {
+                let container = $("#container")
+                let searchGenre = $("#searchGenre").val()
+                $.ajax({
+                    url:'/reportsgenre',
+                    type: "get",
+                    data: {genre: searchGenre},
+                    dataType: "json",
+                    success: function(data) {
+                                console.log("success");
+                                container.empty();
+                                for (let i = 0; i < data.length; i++) {
+                                    container.append(`<p> 
+                                                        <a href="/sales/genre/${data[i].book_genre}"> ${data[i].book_genre} </a>        
+                                                    </p>`)
+
+                                }   
+                            }
+                })
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%- include ('partials/header') %>
+
+        <h1>Orders</h1>
+
+        <% orders.forEach(function(item) { %>
+            <div style="margin-top: 10px; margin-bottom: 10px">
+                <a href="orders/<%= item.order_num %>">#<%= item.order_num %></a>
+            </div>
+        <% }); %>
+
+    </body>
+</html>
