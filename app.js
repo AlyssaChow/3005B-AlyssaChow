@@ -444,8 +444,8 @@ app.post("/register_user", function (req, res, next) {
     let password = req.bodyString("password").replace("'", "");
     let card = req.bodyString("card").replace("'", "")
     let query = `INSERT INTO public.users(
-        user_lname, user_fname, user_address, "user_phoneNum", user_email, user_pass, user_orders)
-        VALUES ('${lastname}', '${firstname}', '${address}', '${phone}', '${email}', '${password}', '{}', '${card}');`
+        user_lname, user_fname, user_address, "user_phoneNum", user_email, user_pass, user_cardnumber)
+        VALUES ('${lastname}', '${firstname}', '${address}', '${phone}', '${email}', '${password}', '${card}');`
     pool.query(query, (err, result) => {
         if (err) throw err;
         if (result) {
