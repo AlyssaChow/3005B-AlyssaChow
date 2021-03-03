@@ -100,7 +100,7 @@ INSERT INTO public.book(
 
 INSERT INTO public.book(
 	book_name, book_genre, book_pages, book_publisher, book_price, book_date, book_stock, book_percentage, book_authornamef, book_authornamel, book_sold)
-	VALUES ('Tales of the Sag', 'Horror', 576, 'Black Coffee', 18.75, '1995-04-27', 20, 0.18, 'Owen', 'Orbit', 0);
+	VALUES ('Tales of the Bag', 'Horror', 576, 'Black Coffee', 18.75, '1995-04-27', 20, 0.18, 'Owen', 'Orbit', 0);
 
 INSERT INTO public.book(
 	book_name, book_genre, book_pages, book_publisher, book_price, book_date, book_stock, book_percentage, book_authornamef, book_authornamel, book_sold)
