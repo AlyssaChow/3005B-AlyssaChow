@@ -3,7 +3,7 @@
 
 Not for distribution. Please.
 
-I made the error of have the node modules folder in this, sorry. 
+I made the error of having the node modules folder in this, sorry. 
 
 Have your postgreSQL database ready and insert the .sql files. Start with the DDL.sql first.
 
